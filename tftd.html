@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Computer Setup by Prashant</title>
+    <style>
+        /* Existing styles remain the same */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+ }
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            position: relative;
+        }
+        h1:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            margin: 10px auto 0;
+            border-radius: 3px;
+        }
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .setup-container {
+            position: relative;
+            width: 48%;
+            height: 500px;
+        }
+        .flowchart-container {
+            width: 48%;
+            height: 500px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 992px) {
+            .setup-container, .flowchart-container {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        /* Table */
+        .table {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 25px;
+            background: linear-gradient(to bottom, #8B4513, #6d3610);
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .table-legs {
+            position: absolute;
+            bottom: 0;
+            width: 90%;
+            left: 5%;
+            height: 90px;
+        }
+        .table-leg {
+            position: absolute;
+            width: 20px;
+            height: 90px;
+            background: linear-gradient(to bottom, #8B4513, #6d3610);
+            bottom: -90px;
+            border-radius: 0 0 5px 5px;
+        }
+        .leg-left {
+            left: 5%;
+        }
+        .leg-right {
+            right: 5%;
+        }
+        /* Monitor */
+        .monitor {
+            position: absolute;
+            top: 60px;
+            left: 55%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 190px;
+            background: linear-gradient(to bottom, #333, #222);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .screen {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 260px;
+            height: 170px;
+            background: linear-gradient(135deg, #1e5799, #56a0d3);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .screen:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .screen:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+            animation: pulse 3s infinite;
+        }
+        .stand {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 30px;
+            background: linear-gradient(to bottom, #555, #444);
+            border-radius: 0 0 10px 10px;
+        }
+        .base {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 10px;
+            background: linear-gradient(to bottom, #666, #444);
+            border-radius: 50%;
+        }
+        .monitor-button {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: #aaa;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .monitor-button:hover {
+            background-color: #ccc;
+            transform: scale(1.1);
+        }
+        .monitor-led {
+            position: absolute;
+            bottom: 5px;
+            right: 20px;
+            width: 6px;
+            height: 6px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #4CAF50;
+            animation: blink 2s infinite;
+        }
+        .monitor-label {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 8px;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        /* Secondary Monitor */
+        .secondary-monitor {
+            position: absolute;
+            top: 90px;
+            left: 60%;
+            transform: translateX(-50%) rotate(15deg);
+            width: 220px;
+            height: 160px;
+            background: linear-gradient(to bottom, #333, #222);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: -1;
+        }
+        .secondary-screen {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            height: 140px;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .secondary-screen:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        /* CPU */
+        .cpu {
+            position: absolute;
+            bottom: 35px;
+            left: 90px;
+            width: 120px;
+            height: 240px;
+            background: linear-gradient(to bottom, #222, #111);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+        .power-button {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(76,175,80,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .power-button:hover {
+            box-shadow: 0 0 8px rgba(76,175,80,0.8);
+            transform: scale(1.1);
+        }
+        .usb-port {
+            width: 30px;
+            height: 10px;
+            background-color: #444;
+            margin-bottom: 5px;
+            border-radius: 2px;
+        }
+        .drive {
+            width: 70px;
+            height: 12px;
+            background-color: #444;
+            margin-bottom: 10px;
+            border-radius: 2px;
+            position: relative;
+        }
+        .drive-led {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            width: 4px;
+            height: 4px;
+            background-color: #ff6b00;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+        .cpu-fan {
+            width: 80px;
+            height: 80px;
+            background: 
+                radial-gradient(circle at center, #333 5px, transparent 6px),
+                repeating-conic-gradient(from 0deg, #333 0deg 10deg, #444 10deg 20deg);
+            border-radius: 50%;
+            margin-top: 15px;
+            position: relative;
+            transform-origin: center center;
+        }
+        .cpu-led {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #ff6b00;
+            border-radius: 50%;
+            top: 70px;
+            right: 20px;
+            box-shadow: 0 0 5px #ff6b00;
+            animation: blink 2s infinite;
+        }
+        .cpu-label {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 8px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        @keyframes fan-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes data-flow {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -20; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(1px); }
+        }
+        .cpu-fan {
+            animation: fan-spin 2s linear infinite;
+        }
+        .secondary-cpu-fan {
+            width: 50px;
+            height: 50px;
+            background: 
+                radial-gradient(circle at center, #333 3px, transparent 4px),
+                repeating-conic-gradient(from 0deg, #333 0deg 10deg, #444 10deg 20deg);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+            animation: fan-spin 1.5s linear infinite;
+        }
+        .key:nth-child(3n) {
+            animation: typing 0.5s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--n));
+        }
+        .key:nth-child(3n+1) {
+            animation: typing 0.7s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--n));
+        }
+        .key:nth-child(3n+2) {
+            animation: typing 0.6s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--n));
+        }
+        .mouse-button:active {
+            transform: translateY(2px);
+        }
+        .power-button {
+            animation: pulse 2s infinite;
+        }
+        .data-flow {
+            stroke-dasharray: 5;
+            animation: data-flow 1s linear infinite;
+        }
+        /* Keyboard */
+        .keyboard {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 95px;
+            background: linear-gradient(to bottom, #444, #222);
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px;
+            justify-content: center;
+            align-content: flex-start;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .key {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #888, #555);
+            margin: 2px;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.1s;
+        }
+        .key:hover {
+            transform: translateY(1px);
+            box-shadow: 0 0 1px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #999, #666);
+        }
+        .space-key {
+            width: 100px;
+            height: 16px;
+            background: linear-gradient(135deg, #888, #555);
+            margin: 2px;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .keyboard:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 55%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: #888;
+            border-radius: 1px;
+        }
+        /* Mouse */
+        .mouse {
+            position: absolute;
+            bottom: 35px;
+            right: 120px;
+            width: 35px;
+            height: 60px;
+            background: linear-gradient(to bottom, #444, #222);
+            border-radius: 20px 20px 20px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .mouse-button {
+            position: absolute;
+            top: 5px;
+            width: 15px;
+            height: 25px;
+            background: linear-gradient(135deg, #666, #444);
+            border-radius: 5px 5px 0 0;
+            transition: all 0.1s;
+        }
+        .mouse-button:hover {
+            background: linear-gradient(135deg, #777, #555);
+        }
+        .left-button {
+            left: 2px;
+        }
+        .right-button {
+            right: 2px;
+        }
+        .mouse-wheel {
+            position: absolute;
+            top: 17px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 10px;
+            background-color: #aaa;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        /* Headphones */
+        .headphones {
+            position: absolute;
+            top: 35px;
+            right: 80px;
+            width: 100px;
+            height: 120px;
+        }
+        .headphone-band {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            border: 5px solid #333;
+            border-radius: 50% 50% 0 0;
+            border-bottom: none;
+        }
+        .ear-piece {
+            position: absolute;
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(to bottom, #444, #222);
+            border-radius: 25px;
+            bottom: 0;
+        }
+        .left-ear {
+            left: 10px;
+        }
+        .right-ear {
+            right: 10px;
+        }
+        .headphone-wire {
+            position: absolute;
+            width: 2px;
+            height: 70px;
+            background-color: #333;
+            bottom: -70px;
+            left: 20px;
+            transform-origin: top;
+            transform: rotate(10deg);
+        }
+        .cable {
+            position: absolute;
+            z-index: -1;
+            background-color: #333;
+            height: 2px;
+            border-radius: 1px;
+        }
+        .keyboard-cable {
+            width: 180px;
+            bottom: 80px;
+            left: 330px;
+            transform-origin: left center;
+            transform: rotate(15deg);
+        }
+        .keyboard-cable:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            height: 10px;
+            width: 5px;
+            background-color: #555;
+            border-radius: 2px;
+        }
+        .mouse-cable {
+            width: 140px;
+            bottom: 65px;
+            right: 140px;
+            transform-origin: right center;
+            transform: rotate(-15deg);
+        }
+        .mouse-cable:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -5px;
+            height: 10px;
+            width: 5px;
+            background-color: #555;
+            border-radius: 2px;
+        }
+        .monitor-cable {
+            width: 150px;
+            bottom: 150px;
+            left: 160px;
+            transform-origin: left center;
+            transform: rotate(40deg);
+        }
+        .monitor-cable:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            height: 10px;
+            width: 5px;
+            background-color: #555;
+            border-radius: 2px;
+        }
+        .monitor-power-cable {
+            width: 120px;
+            bottom: 120px;
+            left: 310px;
+            transform-origin: left center;
+            transform: rotate(60deg);
+            background-color: #222;
+        }
+        .cpu-power-cable {
+            width: 90px;
+            bottom: 25px;
+            left: 150px;
+            transform-origin: left center;
+            transform: rotate(-10deg);
+            background-color: #222;
+            height: 3px;
+        }
+        .cable-connector {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #666;
+            border-radius: 2px;
+        }
+        .secondary-monitor-cable {
+            width: 120px;
+            bottom: 170px;
+            left: 420px;
+            transform-origin: left center;
+            transform: rotate(65deg);
+        }
+        /* Router/Hub */
+        .router {
+            position: absolute;
+            bottom: 35px;
+            right: 50px;
+            width: 70px;
+            height: 20px;
+            background: linear-gradient(to bottom, #333, #222);
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .router-led {
+            width: 4px;
+            height: 4px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            box-shadow: 0 0 3px #2ecc71;
+            animation: blink 1s infinite;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        .legend {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.2);
+        }
+        .monitor-color {
+            background-color: #333;
+        }
+        .cpu-color {
+            background-color: #222;
+        }
+        .keyboard-color {
+            background-color: #333;
+        }
+        .mouse-color {
+            background-color: #333;
+        }
+        .table-color {
+            background-color: #8B4513;
+        }
+        .headphone-color {
+            background-color: #333;
+        }
+        .router-color {
+            background-color: #333;
+        }
+        .creator-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .creator-name {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* Performance Monitor Overlay */
+        .performance-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 8px;
+            z-index: 2;
+        }
+
+        .performance-bar {
+            width: 80px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 4px 0;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: var(--fill-width);
+            background: var(--fill-color);
+            border-radius: 3px;
+            animation: barFill 2s infinite;
+        }
+
+        /* RGB Lighting Strip */
+        .rgb-strip {
+            position: absolute;
+            width: 280px;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #ff0000 0%,
+                #ff00ff 20%,
+                #0000ff 40%,
+                #00ffff 60%,
+                #00ff00 80%,
+                #ffff00 100%);
+            border-radius: 2.5px;
+            opacity: 0.7;
+            animation: rgbFlow 5s linear infinite;
+        }
+
+        .monitor-backlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                circle at center,
+                rgba(var(--backlight-color), 0.2) 0%,
+                transparent 70%
+            );
+            z-index: -1;
+            animation: backlightChange 10s infinite;
+        }
+
+        /* External Speakers */
+        .speaker {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background: linear-gradient(to bottom, #444, #222);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 5px;
+        }
+
+        .speaker-left {
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .speaker-right {
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .speaker-driver {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at center, #666, #333);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .speaker-tweeter {
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle at center, #666, #333);
+            border-radius: 50%;
+        }
+
+        .volume-knob {
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #888, #555);
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 6px;
+            background: #aaa;
+            transform-origin: bottom center;
+            transform: translate(-50%, -50%) rotate(var(--volume-rotation));
+        }
+
+        /* Webcam */
+        .webcam {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 10px;
+            background: linear-gradient(to bottom, #222, #111);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .webcam-lens {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle at center, #666, #333);
+            border-radius: 50%;
+        }
+
+        .webcam-led {
+            position: absolute;
+            top: 50%;
+            right: 2px;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 3px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            box-shadow: 0 0 2px #4CAF50;
+            animation: blink 2s infinite;
+        }
+
+        /* Cable Management */
+        .cable-management {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .cable-hole {
+            width: 20px;
+            height: 5px;
+            background: #222;
+            border-radius: 2px;
+        }
+
+        /* Animations */
+        @keyframes rgbFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes barFill {
+            0%, 100% { transform: translateX(-5%); }
+            50% { transform: translateX(5%); }
+        }
+
+        @keyframes backlightChange {
+            0% { --backlight-color: 255,0,0; }
+            33% { --backlight-color: 0,255,0; }
+            66% { --backlight-color: 0,0,255; }
+            100% { --backlight-color: 255,0,0; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Computer Setup & System Architecture</h1>
+        
+        <div class="main-content">
+            <div class="setup-container">
+                <!-- Monitor with Performance Overlay -->
+                <div class="monitor">
+                    <div class="webcam">
+                        <div class="webcam-lens"></div>
+                        <div class="webcam-led"></div>
+                    </div>
+                    <div class="screen">
+                        <div class="performance-overlay">
+                            <div>CPU: 45%</div>
+                            <div class="performance-bar">
+                                <div class="bar-fill" style="--fill-width: 45%; --fill-color: #4CAF50;"></div>
+                            </div>
+                            <div>RAM: 6.2/16GB</div>
+                            <div class="performance-bar">
+                                <div class="bar-fill" style="--fill-width: 38%; --fill-color: #2196F3;"></div>
+                            </div>
+                            <div>GPU: 67°C</div>
+                            <div class="performance-bar">
+                                <div class="bar-fill" style="--fill-width: 67%; --fill-color: #FFC107;"></div>
+                            </div>
+                        </div>
+                        <div class="monitor-backlight"></div>
+                    </div>
+                    <div class="stand"></div>
+                    <div class="base"></div>
+                    <div class="monitor-label">4K UHD</div>
+                    <div class="rgb-strip" style="bottom: -5px;"></div>
+                </div>
+
+                <!-- External Speakers -->
+                <div class="speaker speaker-left">
+                    <div class="speaker-tweeter"></div>
+                    <div class="speaker-driver"></div>
+                    <div class="volume-knob">
+                        <div class="volume-indicator" style="--volume-rotation: 45deg;"></div>
+                    </div>
+                </div>
+                <div class="speaker speaker-right">
+                    <div class="speaker-tweeter"></div>
+                    <div class="speaker-driver"></div>
+                    <div class="volume-knob">
+                        <div class="volume-indicator" style="--volume-rotation: 45deg;"></div>
+                    </div>
+                </div>
+
+                <!-- Cable Management -->
+                <div class="cable-management">
+                    <div class="cable-hole"></div>
+                    <div class="cable-hole"></div>
+                    <div class="cable-hole"></div>
+                </div>
+
+                <div class="main-content">
+            <div class="setup-container">
+            <!-- Table -->
+            <div class="table"></div>
+            <div class="table-legs">
+                <div class="table-leg leg-left"></div>
+                <div class="table-leg leg-right"></div>
+            </div>
+            
+            <!-- Monitor -->
+            <div class="monitor">
+                <div class="screen"></div>
+                <div class="stand"></div>
+                <div class="base"></div>
+                <div class="monitor-label">4K UHD</div>
+            </div>
+            
+            <!-- Secondary Monitor -->
+            <div class="secondary-monitor">
+                <div class="secondary-screen"></div>
+                <div class="stand"></div>
+                <div class="base"></div>
+            </div>
+            
+            <!-- CPU -->
+            <div class="cpu">
+                <div class="power-button"></div>
+                <div class="drive"><div class="drive-led"></div></div>
+                <div class="drive"><div class="drive-led"></div></div>
+                <div class="usb-port"></div>
+                <div class="usb-port"></div>
+                <div class="usb-port"></div>
+                <div class="usb-port"></div>
+                <div class="cpu-label">Prashant's Workstation</div>
+            </div>
+            
+            <!-- Keyboard -->
+            <div class="keyboard">
+                <div class="key" style="--n:1"></div><div class="key" style="--n:2"></div><div class="key" style="--n:3"></div><div class="key" style="--n:4"></div><div class="key" style="--n:5"></div>
+                <div class="key" style="--n:6"></div><div class="key" style="--n:7"></div><div class="key" style="--n:8"></div><div class="key" style="--n:9"></div><div class="key" style="--n:10"></div>
+                <div class="key" style="--n:11"></div><div class="key" style="--n:12"></div><div class="key" style="--n:13"></div><div class="key" style="--n:14"></div><div class="key" style="--n:15"></div>
+                <div class="key" style="--n:16"></div><div class="key" style="--n:17"></div><div class="key" style="--n:18"></div><div class="key" style="--n:19"></div><div class="key" style="--n:20"></div>
+                <div class="key" style="--n:21"></div><div class="key" style="--n:22"></div><div class="key" style="--n:23"></div><div class="key" style="--n:24"></div><div class="key" style="--n:25"></div>
+                <div class="key" style="--n:26"></div><div class="key" style="--n:27"></div><div class="key" style="--n:28"></div><div class="key" style="--n:29"></div><div class="key" style="--n:30"></div>
+                <div class="key" style="--n:31"></div><div class="key" style="--n:32"></div><div class="key" style="--n:33"></div><div class="key" style="--n:34"></div><div class="key" style="--n:35"></div>
+                <div class="key" style="--n:36"></div><div class="key" style="--n:37"></div><div class="key" style="--n:38"></div><div class="key" style="--n:39"></div><div class="key" style="--n:40"></div>
+                <div class="space-key"></div>
+            </div>
+            
+            <!-- Mouse -->
+            <div class="mouse">
+                <div class="mouse-button left-button"></div>
+                <div class="mouse-button right-button"></div>
+                <div class="mouse-wheel"></div>
+            </div>
+            
+            <!-- Headphones -->
+            <div class="headphones">
+                <div class="headphone-band"></div>
+                <div class="ear-piece left-ear"></div>
+                <div class="ear-piece right-ear"></div>
+                <div class="headphone-wire"></div>
+            </div>
+            
+            <!-- Router/Hub -->
+            <div class="router">
+                <div class="router-led" style="--i:1"></div>
+                <div class="router-led" style="--i:2"></div>
+                <div class="router-led" style="--i:3"></div>
+                <div class="router-led" style="--i:4"></div>
+                <div class="router-led" style="--i:5"></div>
+            </div>
+            
+            <!-- Cables -->
+            <div class="cable keyboard-cable"></div>
+            <div class="cable mouse-cable"></div>
+            <div class="cable monitor-cable"></div>
+            <div class="cable secondary-monitor-cable"></div>
+            <div class="cable monitor-power-cable"></div>
+            <div class="cable cpu-power-cable"></div>
+            
+            <!-- CPU components -->
+            <div class="cpu-fan"></div>
+            <div class="secondary-cpu-fan"></div>
+            <div class="cpu-led"></div>
+            
+            <!-- Monitor components -->
+            <div class="monitor-button"></div>
+            <div class="monitor-led"></div>
+            
+            <!-- Cable connectors -->
+            <div class="cable-connector" style="bottom: 80px; left: 330px;"></div>
+            <div class="cable-connector" style="bottom: 65px; right: 140px;"></div>
+            <div class="cable-connector" style="bottom: 150px; left: 160px;"></div>
+            <div class="cable-connector" style="bottom: 170px; left: 420px;"></div>
+            <div class="cable-connector" style="bottom: 120px; left: 310px;"></div>
+            <div class="cable-connector" style="bottom: 25px; left: 150px;"></div>
+        </div>
+            
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
